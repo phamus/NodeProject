@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-let broswer, page;
+let browser, page;
 beforeEach(async () => {
   browser = await puppeteer.launch({
     headless: false
@@ -9,6 +9,10 @@ beforeEach(async () => {
   page = await browser.newPage();
 
   await page.goto("localhost:3000");
+});
+
+afterEach(async () => {
+  await browser.close();
 });
 
 test("We can launch a broswer like so", async () => {
